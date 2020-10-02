@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Data
 @AllArgsConstructor
@@ -29,4 +30,13 @@ public class SandwichRecipe {
             inverseJoinColumns = { @JoinColumn(name = "ingredient_id")})
     private Set<Ingredient> ingredients = new HashSet<>();
 
+    public void addIngredient(Ingredient ingredient) {
+        this.ingredients.add(ingredient);
+    }
+
+    public Set<Integer> getIngredientIds() {
+        return this.ingredients.stream()
+                .map(Ingredient::getId)
+                .collect(Collectors.toSet());
+    }
 }
