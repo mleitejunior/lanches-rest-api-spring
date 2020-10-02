@@ -5,7 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -17,7 +18,7 @@ import java.util.stream.Collectors;
 public class Ingredient {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="ingredient_id")
     private int id;
 
@@ -31,15 +32,15 @@ public class Ingredient {
     @JoinTable(name = "sandwich_recipe_has_ingredient",
             joinColumns = @JoinColumn(name = "ingredient_id"),
             inverseJoinColumns = { @JoinColumn(name = "sandwich_recipe_id")})
-    private Set<SandwichRecipe> sandwichRecipes = new HashSet<>();
+    private List<SandwichRecipe> sandwichRecipes = new ArrayList<>();
 
     public void addSandwichRecipe(SandwichRecipe sandwichRecipe) {
         this.sandwichRecipes.add(sandwichRecipe);
     }
 
-    public Set<Integer> getSandwichRecipeIds() {
+    public List<Integer> getSandwichRecipeIds() {
         return this.sandwichRecipes.stream()
                 .map(SandwichRecipe::getId)
-                .collect(Collectors.toSet());
+                .collect(Collectors.toList());
     }
 }
