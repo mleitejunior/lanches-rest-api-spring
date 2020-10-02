@@ -35,11 +35,4 @@ public class SandwichRecipeService {
         return "SandwichRecipe removed : " + id;
     }
 
-    public SandwichRecipe updateSandwichRecipe(SandwichRecipe sandwichRecipe) {
-        SandwichRecipe existingSandwichRecipe = repository.findById(sandwichRecipe.getId()).orElse(null);
-
-        existingSandwichRecipe.setName(sandwichRecipe.getName());
-
-        return repository.save(existingSandwichRecipe);
-    }
 }

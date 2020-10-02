@@ -23,7 +23,7 @@ public class SandwichRecipeController {
         return service.getSandwichRecipes();
     }
 
-    @GetMapping("/sandwich_recipe/id/{id}")
+    @GetMapping("/sandwich_recipe/{id}")
     public SandwichRecipe findSandwichRecipeById(@PathVariable int id) {
         return service.getSandwichRecipeById(id);
     }
@@ -31,11 +31,6 @@ public class SandwichRecipeController {
     @GetMapping("/sandwich_recipe/name/{name}")
     public SandwichRecipe findSandwichRecipeByName(@PathVariable String name) {
         return service.getSandwichRecipeByName(name);
-    }
-
-    @PutMapping("/sandwich_recipe/update")
-    public SandwichRecipe updateIngredient(@RequestBody SandwichRecipe sandwichRecipe) {
-        return service.updateSandwichRecipe(sandwichRecipe);
     }
 
     @DeleteMapping("/sandwich_recipe/{id}")

@@ -28,7 +28,7 @@ public class IngredientController {
         return service.getIngredients();
     }
 
-    @GetMapping("/ingredient/id/{id}")
+    @GetMapping("/ingredient/{id}")
     public Ingredient findIngredientById(@PathVariable int id) {
         return service.getIngredientById(id);
     }
@@ -36,12 +36,6 @@ public class IngredientController {
     @GetMapping("/ingredient/name/{name}")
     public Ingredient findIngredientByName(@PathVariable String name) {
         return service.getIngredientByName(name);
-    }
-
-    // Registro parcial
-    @PutMapping("/ingredient/update")
-    public Ingredient updateIngredient(@RequestBody Ingredient ingredient) {
-        return service.updateIngredient(ingredient);
     }
 
     @DeleteMapping("/ingredient/{id}")

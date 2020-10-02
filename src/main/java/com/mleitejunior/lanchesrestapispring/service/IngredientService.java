@@ -39,12 +39,4 @@ public class IngredientService {
         return "Ingredient removed : " + id;
     }
 
-    public Ingredient updateIngredient(Ingredient ingredient) {
-        Ingredient existingIngredient = repository.findById(ingredient.getId()).orElse(null);
-
-        existingIngredient.setName(ingredient.getName());
-        existingIngredient.setCostPerItem(ingredient.getCostPerItem());
-
-        return repository.save(existingIngredient);
-    }
 }

@@ -5,10 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 @Data
 @AllArgsConstructor
@@ -18,7 +15,7 @@ import java.util.stream.Collectors;
 public class Ingredient {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="ingredient_id")
     private int id;
 
@@ -27,20 +24,4 @@ public class Ingredient {
 
     @Column(nullable = false)
     private double costPerItem;
-
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "sandwich_recipe_has_ingredient",
-            joinColumns = @JoinColumn(name = "ingredient_id"),
-            inverseJoinColumns = { @JoinColumn(name = "sandwich_recipe_id")})
-    private List<SandwichRecipe> sandwichRecipes = new ArrayList<>();
-
-    public void addSandwichRecipe(SandwichRecipe sandwichRecipe) {
-        this.sandwichRecipes.add(sandwichRecipe);
-    }
-
-    public List<Integer> getSandwichRecipeIds() {
-        return this.sandwichRecipes.stream()
-                .map(SandwichRecipe::getId)
-                .collect(Collectors.toList());
-    }
 }
