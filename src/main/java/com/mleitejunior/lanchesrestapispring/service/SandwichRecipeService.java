@@ -1,9 +1,6 @@
 package com.mleitejunior.lanchesrestapispring.service;
 
-import com.mleitejunior.lanchesrestapispring.model.Ingredient;
-import com.mleitejunior.lanchesrestapispring.model.Sandwich;
 import com.mleitejunior.lanchesrestapispring.model.SandwichRecipe;
-import com.mleitejunior.lanchesrestapispring.repository.IngredientRepository;
 import com.mleitejunior.lanchesrestapispring.repository.SandwichRecipeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

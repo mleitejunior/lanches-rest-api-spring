@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -23,4 +25,11 @@ public class Ingredient {
 
     @Column(nullable = false)
     private double costPerItem;
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "sandwich_recipe_has_ingredient",
+            joinColumns = @JoinColumn(name = "ingredient_id"),
+            inverseJoinColumns = { @JoinColumn(name = "sandwich_recipe_id")})
+    private Set<SandwichRecipe> sandwichRecipes = new HashSet<>();
+
 }
