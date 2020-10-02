@@ -26,8 +26,4 @@ public class SaleItem {
     @ManyToOne
     @JoinColumn(name = "ingredient_id", nullable = false)
     private Ingredient ingredient;
-
-    @ManyToOne
-    @JoinColumn(name = "sandwich_recipe_id")
-    private SandwichRecipe sandwichRecipe;
 }
