@@ -26,7 +26,7 @@ public class SandwichRecipe {
     @Column(unique = true, nullable = false)
     private String name;
 
-    @ManyToMany(cascade = CascadeType.ALL) //Tanto apaga quanto salva
+    @ManyToMany//(cascade = CascadeType.ALL) //Tanto apaga quanto salva
     @JoinTable(
             name = "sandwich_recipe_has_ingredient",
             joinColumns = @JoinColumn(name = "sandwich_recipe_id"),

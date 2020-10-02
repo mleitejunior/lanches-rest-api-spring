@@ -1,5 +1,6 @@
 package com.mleitejunior.lanchesrestapispring.service;
 
+import com.mleitejunior.lanchesrestapispring.model.Ingredient;
 import com.mleitejunior.lanchesrestapispring.model.SandwichRecipe;
 import com.mleitejunior.lanchesrestapispring.repository.SandwichRecipeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,10 @@ public class SandwichRecipeService {
 
     public SandwichRecipe saveSandwichRecipe(SandwichRecipe sandwichRecipe) {
         return repository.save(sandwichRecipe);
+    }
+
+    public List<SandwichRecipe> saveSandwichRecipes(List<SandwichRecipe> sandwichRecipes) {
+        return repository.saveAll(sandwichRecipes);
     }
 
     public List<SandwichRecipe> getSandwichRecipes() {

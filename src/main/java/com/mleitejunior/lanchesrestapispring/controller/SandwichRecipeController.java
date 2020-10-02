@@ -1,5 +1,6 @@
 package com.mleitejunior.lanchesrestapispring.controller;
 
+import com.mleitejunior.lanchesrestapispring.model.Ingredient;
 import com.mleitejunior.lanchesrestapispring.model.SandwichRecipe;
 import com.mleitejunior.lanchesrestapispring.service.SandwichRecipeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,11 @@ public class SandwichRecipeController {
     @PostMapping("/sandwich_recipe")
     public SandwichRecipe addSandwichRecipe(@RequestBody SandwichRecipe sandwichRecipe) {
         return service.saveSandwichRecipe(sandwichRecipe);
+    }
+
+    @PostMapping("/sandwich_recipes")
+    public List<SandwichRecipe> addSandwichRecipes(@RequestBody List<SandwichRecipe> sandwichRecipes) {
+        return service.saveSandwichRecipes(sandwichRecipes);
     }
 
     @GetMapping("/sandwich_recipes")
