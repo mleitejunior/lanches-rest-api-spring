@@ -36,7 +36,7 @@ public class IngredientService {
     public String deleteIngredient(int id) {
         repository.deleteById(id);
 
-        return "Product removed : " + id;
+        return "Ingredient removed : " + id;
     }
 
     public Ingredient updateIngredient(Ingredient ingredient) {

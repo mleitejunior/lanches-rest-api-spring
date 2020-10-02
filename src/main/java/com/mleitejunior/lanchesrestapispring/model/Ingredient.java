@@ -15,9 +15,12 @@ public class Ingredient {
 
     @Id
     @GeneratedValue
+    @Column(name="ingredient_id")
     private int id;
 
+    @Column(unique = true, nullable = false)
     private String name;
-    private double costPerItem;
 
+    @Column(nullable = false)
+    private double costPerItem;
 }

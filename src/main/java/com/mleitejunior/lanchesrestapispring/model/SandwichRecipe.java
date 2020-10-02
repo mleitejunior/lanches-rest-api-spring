@@ -5,20 +5,19 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "item_order")
-public class ItemOrder {
+@Table(name = "sandwich_recipe")
+public class SandwichRecipe {
 
     @Id
     @GeneratedValue
+    @Column(name="sandwich_recipe_id")
     private int id;
 
-
-    private List<IngredientQuantity> ingredientQuantityList;
-    private double totalPrice;
+    @Column(unique = true, nullable = false)
+    private String name;
 }

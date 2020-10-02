@@ -14,7 +14,7 @@ public class IngredientController {
     private IngredientService service;
 
     @PostMapping("/ingredient")
-    public Ingredient addProduct(@RequestBody Ingredient ingredient) {
+    public Ingredient addIngredient(@RequestBody Ingredient ingredient) {
         return service.saveIngredient(ingredient);
     }
 
@@ -38,6 +38,7 @@ public class IngredientController {
         return service.getIngredientByName(name);
     }
 
+    // Registro parcial
     @PutMapping("/ingredient/update")
     public Ingredient updateIngredient(@RequestBody Ingredient ingredient) {
         return service.updateIngredient(ingredient);
