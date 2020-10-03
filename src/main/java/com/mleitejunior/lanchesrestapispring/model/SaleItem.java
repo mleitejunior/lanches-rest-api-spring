@@ -23,11 +23,11 @@ public class SaleItem {
     @Column
     private double ingredientPrice;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "ingredient_id", nullable = false)
     private Ingredient ingredient;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "sale_id", nullable = false)
     private Sale sale;
 }
