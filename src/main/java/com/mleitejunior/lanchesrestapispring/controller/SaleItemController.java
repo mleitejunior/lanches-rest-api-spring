@@ -25,7 +25,6 @@ public class SaleItemController {
         return service.saveSaleItems(saleItems);
     }
 
-
     @GetMapping("/sale_items")
     public List<SaleItem> findAllSaleItems() {
         return service.getSaleItems();
@@ -34,6 +33,11 @@ public class SaleItemController {
     @GetMapping("/sale_item/{id}")
     public SaleItem findSaleItemById(@PathVariable int id) {
         return service.getSaleItemById(id);
+    }
+
+    @GetMapping("/sale_items/sale/{id}")
+    public List<SaleItem> findAllSaleItemsBySaleId(@PathVariable int id) {
+        return service.findAllSalePriceBySaleId(id);
     }
 
     @DeleteMapping("/sale_item/{id}")

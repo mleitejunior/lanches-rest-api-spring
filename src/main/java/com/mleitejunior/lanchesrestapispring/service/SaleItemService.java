@@ -27,6 +27,10 @@ public class SaleItemService {
         return repository.findAll();
     }
 
+    public List<SaleItem> findAllSalePriceBySaleId(int id) {
+        return repository.findAllSaleItemsBySaleId(id);
+    }
+
     public SaleItem getSaleItemById(int id) {
         return repository.findById(id).orElse(null);
     }
@@ -37,4 +41,9 @@ public class SaleItemService {
         return "SaleItem removed : " + id;
     }
 
+    private float getSaleItemsTotalPrice() {
+        float total = 0;
+
+        return total;
+    }
 }

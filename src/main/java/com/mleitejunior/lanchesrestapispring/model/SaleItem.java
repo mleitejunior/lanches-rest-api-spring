@@ -20,10 +20,14 @@ public class SaleItem {
     @Column(name="sale_item_id")
     private int id;
 
-    @Column(nullable = false)
+    @Column
     private double ingredientPrice;
 
     @ManyToOne
     @JoinColumn(name = "ingredient_id", nullable = false)
     private Ingredient ingredient;
+
+    @ManyToOne
+    @JoinColumn(name = "sale_id", nullable = false)
+    private Sale sale;
 }
