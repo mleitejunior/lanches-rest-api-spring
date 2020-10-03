@@ -5,6 +5,7 @@ import com.mleitejunior.lanchesrestapispring.model.SandwichRecipe;
 import com.mleitejunior.lanchesrestapispring.service.SaleItemService;
 import com.mleitejunior.lanchesrestapispring.service.SandwichRecipeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,10 +21,10 @@ public class SaleItemController {
         return service.saveSaleItem(saleItem);
     }
 
-    @PostMapping("/sale_items")
-    public List<SaleItem> addSaleItems(@RequestBody List<SaleItem> saleItems) {
-        return service.saveSaleItems(saleItems);
-    }
+//    @PostMapping("/sale_items")
+//    public List<SaleItem> addSaleItems(@RequestBody List<SaleItem> saleItems) {
+//        return service.saveSaleItems(saleItems);
+//    }
 
     @GetMapping("/sale_items")
     public List<SaleItem> findAllSaleItems() {
@@ -41,7 +42,7 @@ public class SaleItemController {
     }
 
     @DeleteMapping("/sale_item/{id}")
-    public String deleteSaleItem(@PathVariable int id) {
-        return service.deleteSaleItem(id);
+    public ResponseEntity<SaleItem> deleteSaleItem(@PathVariable int id) {
+        return ResponseEntity.ok(service.deleteSaleItem(id));
     }
 }

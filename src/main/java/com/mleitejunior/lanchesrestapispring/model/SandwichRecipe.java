@@ -21,12 +21,12 @@ public class SandwichRecipe {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="sandwich_recipe_id")
-    private int id;
+    private Integer id;
 
     @Column(unique = true, nullable = false)
     private String name;
 
-    @ManyToMany//(cascade = CascadeType.ALL) //Tanto apaga quanto salva
+    @ManyToMany
     @JoinTable(
             name = "sandwich_recipe_has_ingredient",
             joinColumns = @JoinColumn(name = "sandwich_recipe_id"),

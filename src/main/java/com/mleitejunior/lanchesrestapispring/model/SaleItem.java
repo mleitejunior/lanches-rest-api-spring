@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -18,10 +17,10 @@ public class SaleItem {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="sale_item_id")
-    private int id;
+    private Integer id;
 
     @Column
-    private double ingredientPrice;
+    private Double ingredientPrice;
 
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "ingredient_id", nullable = false)
