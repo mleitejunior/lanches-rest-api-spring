@@ -28,7 +28,6 @@ public class Sandwich {
     @JsonIgnore
     private List<SandwichItem> sandwichItems;
 
-    // NAO SALVA NO BANCO
     @Transient
     private SandwichRecipe sandwichRecipe;
 }
