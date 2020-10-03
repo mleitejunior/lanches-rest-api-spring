@@ -41,16 +41,25 @@ public class IngredientController {
         return ResponseEntity.ok(service.getIngredients());
     }
 
+    @ApiOperation(value = "Find a specific Ingredient",
+            notes = "Returns the Ingredient by the given id",
+            response = Ingredient.class)
     @GetMapping("/ingredient/{id}")
     public ResponseEntity<Ingredient> findIngredientById(@PathVariable int id) {
         return ResponseEntity.ok(service.getIngredientById(id));
     }
 
+    @ApiOperation(value = "Find a Ingredient by name",
+            notes = "Returns the Ingredient with the exact given name ",
+            response = Ingredient.class)
     @GetMapping("/ingredient/name/{name}")
     public ResponseEntity<Ingredient> findIngredientByName(@PathVariable String name) {
         return ResponseEntity.ok(service.getIngredientByName(name));
     }
 
+    @ApiOperation(value = "Delete a ingredient",
+            notes = "Delete a ingredient by given Id, returning a String conclusion message",
+            response = String.class)
     @DeleteMapping("/ingredient/{id}")
     public ResponseEntity<String> deleteIngredient(@PathVariable int id) {
         return ResponseEntity.ok(service.deleteIngredient(id));
