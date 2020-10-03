@@ -1,8 +1,8 @@
 package com.mleitejunior.lanchesrestapispring.service;
 
 import com.mleitejunior.lanchesrestapispring.enums.IngredientType;
-import com.mleitejunior.lanchesrestapispring.model.Sale;
-import com.mleitejunior.lanchesrestapispring.model.SaleItem;
+import com.mleitejunior.lanchesrestapispring.model.Sandwich;
+import com.mleitejunior.lanchesrestapispring.model.SandwichItem;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,31 +12,31 @@ import java.util.stream.Collectors;
 public class PromotionService {
     private static double DISCOUNTQUANTITYPROMOTION = 10;
 
-    public double getValuePromotionDiscount(Sale sale) {
-        double starterPrice = sale.getTotalPrice();
+    public double getValuePromotionDiscount(Sandwich sandwich) {
+        double starterPrice = sandwich.getTotalPrice();
 
-        double valueOfQuantityPromotionDiscount = generateValueOfQuantityPromotionDiscount(sale.getSaleItems());
+        double valueOfQuantityPromotionDiscount = generateValueOfQuantityPromotionDiscount(sandwich.getSandwichItems());
 
-        if (isIngredientTypePromotionDiscount(sale.getSaleItems())) {
+        if (isIngredientTypePromotionDiscount(sandwich.getSandwichItems())) {
             starterPrice = starterPrice * (1 - (DISCOUNTQUANTITYPROMOTION/100));
         }
 
         return starterPrice - valueOfQuantityPromotionDiscount;
     }
 
-    private double generateValueOfQuantityPromotionDiscount(List<SaleItem> saleItems) {
+    private double generateValueOfQuantityPromotionDiscount(List<SandwichItem> sandwichItems) {
 
         // MELHORAR TRAZENDO DO BANCO JÁ CALCULADA A QUANTIDADE DE CADA ITEM
-        List<SaleItem> queijoItemList = saleItems
+        List<SandwichItem> queijoItemList = sandwichItems
                 .stream()
-                .filter(saleItem -> saleItem.getIngredient()
+                .filter(sandwichItem -> sandwichItem.getIngredient()
                         .getIngredientType().name()
                         .equals(IngredientType.QUEIJO.name()))
                 .collect(Collectors.toList());
 
-        List<SaleItem> carneItemList = saleItems
+        List<SandwichItem> carneItemList = sandwichItems
                 .stream()
-                .filter(saleItem -> saleItem.getIngredient()
+                .filter(sandwichItem -> sandwichItem.getIngredient()
                         .getIngredientType().name()
                         .equals(IngredientType.HAMBURGUER.name()))
                 .collect(Collectors.toList());
@@ -60,16 +60,16 @@ public class PromotionService {
         return totalDiscount;
     }
 
-    private boolean isIngredientTypePromotionDiscount(List<SaleItem> saleItems) {
-        return saleItems
+    private boolean isIngredientTypePromotionDiscount(List<SandwichItem> sandwichItems) {
+        return sandwichItems
                 .stream()
-                .anyMatch(saleItem -> saleItem
+                .anyMatch(sandwichItem -> sandwichItem
                         .getIngredient()
                         .getIngredientType()
                         .name()
                         .equals(IngredientType.ALFACE.name())) &&
-                saleItems.stream()
-                        .noneMatch(saleItem -> saleItem
+                sandwichItems.stream()
+                        .noneMatch(sandwichItem -> sandwichItem
                                 .getIngredient()
                                 .getIngredientType()
                                 .name()

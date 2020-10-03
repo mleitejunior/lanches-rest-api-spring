@@ -1,70 +1,68 @@
 package com.mleitejunior.lanchesrestapispring.service;
 
-import com.mleitejunior.lanchesrestapispring.model.Sale;
-import com.mleitejunior.lanchesrestapispring.model.SaleItem;
+import com.mleitejunior.lanchesrestapispring.model.Sandwich;
+import com.mleitejunior.lanchesrestapispring.model.SandwichItem;
 import com.mleitejunior.lanchesrestapispring.model.SandwichRecipe;
-import com.mleitejunior.lanchesrestapispring.repository.SaleItemRepository;
-import com.mleitejunior.lanchesrestapispring.repository.SaleRepository;
+import com.mleitejunior.lanchesrestapispring.repository.SandwichRepository;
 import com.mleitejunior.lanchesrestapispring.repository.SandwichRecipeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 @Service
-public class SaleService {
+public class SandwichService {
 
     @Autowired
-    private SaleRepository repository;
+    private SandwichRepository repository;
 
     @Autowired
-    private SaleItemService saleItemService;
+    private SandwichItemService sandwichItemService;
 
     @Autowired
     private SandwichRecipeRepository sandwichRecipeRepository;
 
-    public Sale saveSale(Sale sale) {
-        repository.save(sale);
+    public Sandwich saveSandwich(Sandwich sandwich) {
+        repository.save(sandwich);
 
-        if (sale.getSandwichRecipe() != null && sale.getSandwichRecipe().getId() != null) {
+        if (sandwich.getSandwichRecipe() != null && sandwich.getSandwichRecipe().getId() != null) {
             SandwichRecipe sandwichRecipe = sandwichRecipeRepository
-                    .findById(sale.getSandwichRecipe().getId())
+                    .findById(sandwich.getSandwichRecipe().getId())
                     .orElseThrow(EntityNotFoundException::new);
 
             if (!sandwichRecipe.getIngredients().isEmpty()) {
-                List<SaleItem> saleItems = sandwichRecipe
+                List<SandwichItem> sandwichItems = sandwichRecipe
                         .getIngredients()
                         .stream()
                         .map(ingredient -> {
-                            SaleItem s = new SaleItem();
-                            s.setSale(sale);
+                            SandwichItem s = new SandwichItem();
+                            s.setSandwich(sandwich);
                             s.setIngredient(ingredient);
                             s.setIngredientPrice(ingredient.getCostPerItem());
                             return s;
                         })
                         .collect(Collectors.toList());
 
-                saleItemService.saveSaleItems(saleItems, sale);
+                sandwichItemService.saveSandwichItems(sandwichItems, sandwich);
             }
         }
 
-        return sale;
+        return sandwich;
     }
 
-    public List<Sale> getSales() {
+    public List<Sandwich> getSandwiches() {
         return repository.findAll();
     }
 
-    public Sale getSaleById(int id) {
+    public Sandwich getSandwichById(int id) {
         return repository.findById(id).orElse(null);
     }
 
-    public String deleteSale(int id) {
+    public String deleteSandwich(int id) {
         repository.deleteById(id);
 
-        return "Sale removed : " + id;
+        return "Sandwich removed : " + id;
     }
 }

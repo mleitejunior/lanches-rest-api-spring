@@ -11,12 +11,12 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "sale_item")
-public class SaleItem {
+@Table(name = "sandwich_item")
+public class SandwichItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="sale_item_id")
+    @Column(name="sandwich_item_id")
     private Integer id;
 
     @Column
@@ -27,6 +27,6 @@ public class SaleItem {
     private Ingredient ingredient;
 
     @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "sale_id", nullable = false)
-    private Sale sale;
+    @JoinColumn(name = "sandwich_id", nullable = false)
+    private Sandwich sandwich;
 }

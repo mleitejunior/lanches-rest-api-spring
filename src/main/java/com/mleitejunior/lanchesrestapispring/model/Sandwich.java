@@ -13,20 +13,20 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "sale")
-public class Sale {
+@Table(name = "sandwich")
+public class Sandwich {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="sale_id")
+    @Column(name="sandwich_id")
     private Integer id;
 
     @Column
     private Double totalPrice;
 
-    @OneToMany(mappedBy = "sale")
+    @OneToMany(mappedBy = "sandwich")
     @JsonIgnore
-    private List<SaleItem> saleItems;
+    private List<SandwichItem> sandwichItems;
 
     // NAO SALVA NO BANCO
     @Transient
