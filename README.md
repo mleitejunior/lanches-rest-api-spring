@@ -2,14 +2,9 @@
   <img src="https://raw.githubusercontent.com/mleitejunior/lanches-rest-api-spring/master/readme_resources/logo.png" title="Lanches logo" alt="Lanches Rest API">
 </p>
 
-<p align="center">Rest API de gestão de lanches (backend)<br>
+<p align="center"><b>Rest API</b> de gestão de lanches (backend)<br>
 
-## Features
-- REST API
-- PostgreSQL
-- JWT authentication
-
-## Technology Stacks
+## Techs
   - Java 8
   - Spring Boot 2.3.4
   - Spring Security
@@ -63,6 +58,8 @@ Salve o bearer token de resposta e o utilize para as requisições que somente o
 
 ![](https://raw.githubusercontent.com/mleitejunior/lanches-rest-api-spring/master/readme_resources/mer.png)
 
+Baixe o `.sql` de [exemplo de banco já populado](https://raw.githubusercontent.com/mleitejunior/lanches-rest-api-spring/master/readme_resources/dump-lanches.sql)
+
 O Lanches API rest tem o intuito de gerir a venda de lanches, possibilitando o registro de ingredientes e a criação de lanches personalizados, assim como calcular o valor do lanche e aplicando descontos promocionais para lanches com ingredientes específicos.
 
 *Entidades:*
@@ -71,8 +68,63 @@ O Lanches API rest tem o intuito de gerir a venda de lanches, possibilitando o r
 - sandwich (representa o pedido de um lanche em específico)
 - sandwich_item (o ingrediente do lanche específico)
 
+ps: O atributo **ingredient_price** em `sandwich_item` existe para manter registrado o valor atual do ingrediente no momento do pedido. Caso contrário não seria necessário por já existir o **price_per_item** em `ingredient`.
+
 *Tabela de relacionamento:*
 - sandwich_recipe_has_ingredient (armazena quais ingredientes fazem parte de uma receita)
+
+## Requisições e Regras de Negócios
+
+**INSERINDO NOVA RECEITA DE SANDUICHE:**
+
+O exemplo do banco já populado foi adicionado pelo POST `/sandwich_recipe` da seguinte forma:
+```
+[
+	{
+  "name": "x-burguer",
+  "ingredients": [
+		{
+			"id": 3
+		},
+		{
+			"id": 5
+		}
+  ]
+  }
+]
+```
+Onde `3` é o ID do hambúrguer no banco e `5` é ID do queijo.
+
+
+**FAZENDO O PEDIDO DE UM LANCHE POR RECEITA:**
+
+É possível pedir um sanduiche direto pelo id de sua receita, gerando os `sandwich_items` diretamente através de um POST `/sandwich`:
+```
+{
+	"sandwichRecipe": { "id": 1 }
+}
+```
+
+Onde `1` seria o id de um x-bacon por exemplo.
+
+
+**PROMOÇÕES:**
+
+A classe `src/main/java/com/mleitejunior/lanchesrestapispring/service/PromotionService.java` gerencia a regra de negócios das promoções, que no momento são 3:
+
+*Light:* Se o lanche tem alface e não tem bacon, ganha 10% de desconto.
+*Muita carne:* A cada 3 porções de hambúrguer o cliente só paga 2, a cada 6 porções, o cliente pagará 4 e assim sucessivamente.
+*Muito queijo:* A cada 3 porções de queijo o cliente só paga 2, a cada 6 porções, o cliente pagará 4 e assim sucessivamente.
+
+Sempre que ocorrer um INSERT, UPDATE ou DELETE de um `sandwich_item`, o desconto é calculado sobre o preço do `sandwich`.
+
+## Melhorias
+
+**Swagger:**
+No momento a documentação existe porém não cobre ainda os métodos citados nos exemplos acima.
+
+**Autenticação AWT**
+No momento a autenticação está feita por regex (o que é longe do ideal) e as credenciais estão salvas na memória, será criado a entidade `user` para registrar clientes e funcionários e mapeadas as requisições corretas para que se autentique de acordo com as permissões de usuário.
 
 ## Documentação
 
