@@ -39,7 +39,7 @@ public class SandwichController {
     public ResponseEntity<Sandwich> findSandwichByName(@PathVariable String name) {
         return ResponseEntity.ok(service.getSandwichByName(name));
     }
-    
+
     @PutMapping("/sandwich")
     public ResponseEntity<Sandwich> updateSandwich(@RequestBody Sandwich sandwich) {
         return ResponseEntity.ok(service.updateSandwich(sandwich));

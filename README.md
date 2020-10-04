@@ -22,6 +22,15 @@ A Lanches API Rest tem o intuito de gerir a venda de lanches, possibilitando o r
 ### Banco de dados:
 
 O projeto no momento está configurado com PostgreSQL, será necessário um banco com o nome `lanches`.
+
+**Via Imagem DOCKER**
+Se você utiliza o [Docker](https://www.docker.com/), pode importar a imagem com o comando:
+`docker import - lanches_postgresql.tar`
+
+[DOWNLOAD DA IMAGEM](https://drive.google.com/file/d/1Nk4ByfneNUzwmilnlLs6BGha-2_FcBwQ/view?usp=sharing)
+
+**Manualmente**
+
 As configurações podem ser modificadas no `src/main/resources/application.properties`:
 
 ```
