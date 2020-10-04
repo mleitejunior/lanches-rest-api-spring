@@ -136,6 +136,9 @@ Se deseja visualizar as requisições em seu Insomnia, importe as configuraçõe
 
 ## Melhorias
 
+**Testes:**
+Os testes até o momento foram feitos manualmente, deve-se implementar testes automáticos para verificar as regras de negócios e as relações entre as tabelas.
+
 **Implementação de sistema de vendas:**
 É necessário expandir o banco e o sistema tanto para as validações atuais quanto para recursos básicos de uma lanchonete.
 
