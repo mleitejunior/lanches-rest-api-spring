@@ -7,7 +7,9 @@ import com.mleitejunior.lanchesrestapispring.repository.IngredientRepository;
 import com.mleitejunior.lanchesrestapispring.repository.OrderItemRepository;
 import com.mleitejunior.lanchesrestapispring.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
@@ -72,6 +74,13 @@ public class OrderItemService {
         updateOrderTotalPrice(orderItem.getOrder(), orderItems);
 
         return orderItem;
+    }
+
+    public OrderItem updateOrderItem(OrderItem orderItem) {
+        if (repository.findById(orderItem.getId()) != null) {
+            return repository.save(orderItem);
+        }
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "OrderItem not found");
     }
 
     private void updateOrderTotalPrice(Order order, List<OrderItem> orderItems) {

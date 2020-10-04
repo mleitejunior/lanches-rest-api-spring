@@ -29,6 +29,11 @@ public class OrderController {
         return ResponseEntity.ok(service.getOrderById(id));
     }
 
+    @PutMapping("/order")
+    public ResponseEntity<Order> updateOrder(@RequestBody Order order) {
+        return ResponseEntity.ok(service.updateOrder(order));
+    }
+
     @DeleteMapping("/order/{id}")
     public ResponseEntity<String> deleteOrder(@PathVariable int id) {
         return ResponseEntity.ok(service.deleteOrder(id));

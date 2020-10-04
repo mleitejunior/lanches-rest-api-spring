@@ -1,12 +1,15 @@
 package com.mleitejunior.lanchesrestapispring.service;
 
+import com.mleitejunior.lanchesrestapispring.model.Ingredient;
 import com.mleitejunior.lanchesrestapispring.model.Order;
 import com.mleitejunior.lanchesrestapispring.model.OrderItem;
 import com.mleitejunior.lanchesrestapispring.model.Sandwich;
 import com.mleitejunior.lanchesrestapispring.repository.OrderRepository;
 import com.mleitejunior.lanchesrestapispring.repository.SandwichRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
@@ -58,6 +61,13 @@ public class OrderService {
 
     public Order getOrderById(int id) {
         return repository.findById(id).orElse(null);
+    }
+
+    public Order updateOrder(Order order) {
+        if (repository.findById(order.getId()) != null) {
+            return repository.save(order);
+        }
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Order not found");
     }
 
     public String deleteOrder(int id) {

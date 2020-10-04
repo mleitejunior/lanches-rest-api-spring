@@ -3,7 +3,9 @@ package com.mleitejunior.lanchesrestapispring.service;
 import com.mleitejunior.lanchesrestapispring.model.Ingredient;
 import com.mleitejunior.lanchesrestapispring.repository.IngredientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -27,6 +29,13 @@ public class IngredientService {
 
     public Ingredient getIngredientById(int id) {
         return repository.findById(id).orElse(null);
+    }
+
+    public Ingredient updateIngredient(Ingredient ingredient) {
+        if (repository.findById(ingredient.getId()) != null) {
+            return repository.save(ingredient);
+        }
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Ingredient not found");
     }
 
     public Ingredient getIngredientByName(String name) {

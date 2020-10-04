@@ -2,7 +2,7 @@
   <img src="https://raw.githubusercontent.com/mleitejunior/lanches-rest-api-spring/master/readme_resources/logo.png" title="Lanches logo" alt="Lanches Rest API">
 </p>
 
-<p align="center"><b>Rest API</b> de gestão de lanches (backend)<br>
+<p align="center"><b>Rest API</b> de gestão de lanches<br>
 	
 A Lanches API Rest tem o intuito de gerir a venda de lanches, possibilitando o registro de ingredientes e a criação de lanches personalizados, assim como calcular o valor do lanche e aplicando descontos promocionais para lanches com ingredientes específicos.
 
@@ -124,6 +124,9 @@ Sempre que ocorrer um INSERT, UPDATE ou DELETE de um `order_item`, o desconto é
 
 **Implementação de sistema de vendas:**
 É necessário expandir o banco e o sistema tanto para as validações atuais quanto para recursos básicos de uma lanchonete.
+
+**Abstrair sistema de promoções**
+Apesar estar concentrado em um arquivo apenas, as promoções ainda não são fáceis de serem adicionadas. Pode-se criar uma classe para cada lógica de promoção (no caso temos duas, quantidade e tipo de ingrediente) e chamá-las todas no `PromotionService`, podendo até mesmo ir para o banco de dados com data de expiração da promoção.
 
 **Frontend:**
 Para consumir a API e visualizar o sistema.

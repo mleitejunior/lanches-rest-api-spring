@@ -55,7 +55,10 @@ public class IngredientController {
         return ResponseEntity.ok(service.getIngredientByName(name));
     }
 
-    // PUT
+    @PutMapping("/ingredient")
+    public ResponseEntity<Ingredient> updateIngredient(@RequestBody Ingredient ingredient) {
+        return ResponseEntity.ok(service.updateIngredient(ingredient));
+    }
 
     @ApiOperation(value = "Delete a ingredient",
             notes = "Delete a ingredient by given Id, returning a String conclusion message",

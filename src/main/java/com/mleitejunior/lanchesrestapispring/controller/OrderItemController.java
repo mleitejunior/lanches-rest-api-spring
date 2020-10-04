@@ -1,5 +1,6 @@
 package com.mleitejunior.lanchesrestapispring.controller;
 
+import com.mleitejunior.lanchesrestapispring.model.Order;
 import com.mleitejunior.lanchesrestapispring.model.OrderItem;
 import com.mleitejunior.lanchesrestapispring.service.OrderItemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,11 @@ public class OrderItemController {
     @GetMapping("/order_item/sandwich/{id}")
     public ResponseEntity<List<OrderItem>> findAllOrderItemsByOrderId(@PathVariable int id) {
         return ResponseEntity.ok(service.findAllOrderItemsByOrderId(id));
+    }
+
+    @PutMapping("/order_item")
+    public ResponseEntity<OrderItem> updateOrderItem(@RequestBody OrderItem orderItem) {
+        return ResponseEntity.ok(service.updateOrderItem(orderItem));
     }
 
     @DeleteMapping("/order_item/{id}")

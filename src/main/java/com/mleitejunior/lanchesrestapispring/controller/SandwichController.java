@@ -1,5 +1,6 @@
 package com.mleitejunior.lanchesrestapispring.controller;
 
+import com.mleitejunior.lanchesrestapispring.model.OrderItem;
 import com.mleitejunior.lanchesrestapispring.model.Sandwich;
 import com.mleitejunior.lanchesrestapispring.service.SandwichService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,11 @@ public class SandwichController {
     @GetMapping("/sandwich/name/{name}")
     public ResponseEntity<Sandwich> findSandwichByName(@PathVariable String name) {
         return ResponseEntity.ok(service.getSandwichByName(name));
+    }
+    
+    @PutMapping("/sandwich")
+    public ResponseEntity<Sandwich> updateSandwich(@RequestBody Sandwich sandwich) {
+        return ResponseEntity.ok(service.updateSandwich(sandwich));
     }
 
     @DeleteMapping("/sandwich/{id}")
