@@ -55,6 +55,9 @@ public class IngredientController {
         return ResponseEntity.ok(service.getIngredientByName(name));
     }
 
+    @ApiOperation(value = "Update a Ingredient",
+            notes = "Update a Ingredient with a object Id, Name, Cost and Type",
+            response = Ingredient.class)
     @PutMapping("/ingredient")
     public ResponseEntity<Ingredient> updateIngredient(@RequestBody Ingredient ingredient) {
         return ResponseEntity.ok(service.updateIngredient(ingredient));

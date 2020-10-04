@@ -71,7 +71,7 @@ Algumas requisições precisam de autenticação no sistema para funcionar, util
 
 ![](https://raw.githubusercontent.com/mleitejunior/lanches-rest-api-spring/master/readme_resources/mer.png)
 
-Baixe o `.sql` de [exemplo de banco já populado](https://raw.githubusercontent.com/mleitejunior/lanches-rest-api-spring/master/readme_resources/dump-lanches.sql)
+Caso não utilizou o docker ja citado, você pode baixar o arquivo `.sql` de [exemplo de banco já populado AQUI!](https://raw.githubusercontent.com/mleitejunior/lanches-rest-api-spring/master/readme_resources/dump-lanches.sql)
 
 *Entidades:*
 - ingredient (ingredientes dos lanches com seu valor por custo)
@@ -129,24 +129,27 @@ A classe `src/main/java/com/mleitejunior/lanchesrestapispring/service/PromotionS
 
 Sempre que ocorrer um INSERT, UPDATE ou DELETE de um `order_item`, o desconto é calculado sobre o preço do `order`.
 
+## Documentação
+
+Acesse a documentação do projeto pelo endereço `http://localhost:9191/swagger-ui/`.
+Se deseja visualizar as requisições em seu Insomnia, importe as configurações através do arquivo [lanches_rest_api.yaml](https://raw.githubusercontent.com/mleitejunior/lanches-rest-api-spring/master/readme_resources/lanches_rest_api.yaml)
+
 ## Melhorias
 
 **Implementação de sistema de vendas:**
 É necessário expandir o banco e o sistema tanto para as validações atuais quanto para recursos básicos de uma lanchonete.
 
-**Abstrair sistema de promoções**
+**Abstrair sistema de promoções:**
 Apesar estar concentrado em um arquivo apenas, as promoções ainda não são fáceis de serem adicionadas. Pode-se criar uma classe para cada lógica de promoção (no caso temos duas, quantidade e tipo de ingrediente) e chamá-las todas no `PromotionService`, podendo até mesmo ir para o banco de dados com data de expiração da promoção.
 
 **Frontend:**
 Para consumir a API e visualizar o sistema.
 
-**Autenticação AWT**
+**Autenticação AWT:**
 No momento a autenticação está feita por regex (o que é longe do ideal) e as credenciais estão salvas na memória, será criado a entidade `user` para registrar clientes e funcionários e mapeadas as requisições corretas para que se autentique de acordo com as permissões de usuário.
 
-## Documentação
-
-Acesse a documentação do projeto pelo endereço `http://localhost:9191/swagger-ui/`.
-Para melhor visualização das requisições, importe em seu Insomnia o [lanches_rest_api.yaml](https://raw.githubusercontent.com/mleitejunior/lanches-rest-api-spring/master/readme_resources/lanches_rest_api.yaml)
+**Montagem automatica do projeto:**
+Sintetizar o banco e as configurações em um Dockerfile para ser montado automaticamente pelo projeto maven.
 
 ## Autor
-* **Marcelo Leite Junior** - *Information Systems Final-years Student, code owner* - [mleitejunior's Github](https://github.com/mleitejunior)
+* **Marcelo Leite Junior** - *Information Systems Final-years Student, code owner* - [mleitejunior's Github](https://github.com/mleitejunior) - `mleitejunior@gmail.com`
