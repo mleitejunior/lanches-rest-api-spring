@@ -1,6 +1,6 @@
 _type: export
 __export_format: 4
-__export_date: 2020-10-04T11:23:51.638Z
+__export_date: 2020-10-04T14:29:05.256Z
 __export_source: insomnia.desktop.app:v2020.4.1
 resources:
   - _id: req_074038ea70284530902b2148be7692f9
@@ -95,7 +95,7 @@ resources:
     _type: request
   - _id: req_773c329430424f96a77153d9ac0ab942
     parentId: fld_0b547edd5a6e4bbbaa602d14f4399c10
-    modified: 1601810510814
+    modified: 1601821670290
     created: 1601532120276
     url: http://{{ apiAddress }}/ingredient
     name: Add Ingredient
@@ -105,7 +105,7 @@ resources:
       mimeType: application/json
       text: |-
         {
-        	"name": "alface laranja",
+        	"name": "alface",
         	"costPerItem": 0.4,
         	"ingredientType": "ALFACE"
         }
@@ -138,7 +138,7 @@ resources:
     _type: request_group
   - _id: req_5df6142038d24713add8dbf34c60aac1
     parentId: fld_0b547edd5a6e4bbbaa602d14f4399c10
-    modified: 1601810516922
+    modified: 1601821680470
     created: 1601532120295
     url: http://{{ apiAddress }}/ingredients
     name: Add Ingredients
@@ -193,10 +193,10 @@ resources:
     _type: request
   - _id: req_4d3aefcde12d44a8bbf94fe20f787398
     parentId: fld_0b547edd5a6e4bbbaa602d14f4399c10
-    modified: 1601810519869
+    modified: 1601820380305
     created: 1601532120301
-    url: http://{{ apiAddress }}/ingredients
-    name: List Ingredients
+    url: http://{{ apiAddress }}/ingredient
+    name: List Ingredient
     description: ""
     method: GET
     body: {}
@@ -239,12 +239,12 @@ resources:
     _type: request
   - _id: req_5e752661325a4b5c99d66d1656f45319
     parentId: fld_0b547edd5a6e4bbbaa602d14f4399c10
-    modified: 1601810541786
+    modified: 1601820262374
     created: 1601532120318
     url: http://{{ apiAddress }}/ingredient
     name: Update Ingredient
     description: ""
-    method: POST
+    method: PUT
     body:
       mimeType: application/json
       text: |-
@@ -295,10 +295,10 @@ resources:
     _type: request
   - _id: req_aaecdf4b07244c6081587b45cca160f4
     parentId: fld_51df61309fa04d2abb281e73278b6892
-    modified: 1601810550395
+    modified: 1601820426586
     created: 1601601696257
-    url: http://{{ apiAddress }}/sandwich_recipe
-    name: Add Sandwich Recipe
+    url: http://{{ apiAddress }}/sandwich
+    name: Add Sandwich
     description: ""
     method: POST
     body:
@@ -326,9 +326,9 @@ resources:
     _type: request
   - _id: fld_51df61309fa04d2abb281e73278b6892
     parentId: fld_e2664ed1c88248c6aa21a4b2c36043ac
-    modified: 1601601696244
+    modified: 1601820267742
     created: 1601601696244
-    name: Sandwich Recipe
+    name: Sandwich
     description: ""
     environment: {}
     environmentPropertyOrder: null
@@ -336,10 +336,10 @@ resources:
     _type: request_group
   - _id: req_66bd29f6e34a4d00b2b684578f067efa
     parentId: fld_51df61309fa04d2abb281e73278b6892
-    modified: 1601810553418
+    modified: 1601820429213
     created: 1601672598837
-    url: http://{{ apiAddress }}/sandwich_recipes
-    name: Add Sandwich/Ingredients Recipe
+    url: http://{{ apiAddress }}/sandwich
+    name: Add Sandwich with Ingredients
     description: ""
     method: POST
     body:
@@ -408,10 +408,10 @@ resources:
     _type: request
   - _id: req_cf6d53a7c80240d5889ceec2b5acbb7d
     parentId: fld_51df61309fa04d2abb281e73278b6892
-    modified: 1601810556609
+    modified: 1601820431328
     created: 1601601696268
-    url: http://{{ apiAddress }}/sandwich_recipes
-    name: List Sandwich Recipes
+    url: http://{{ apiAddress }}/sandwich
+    name: List Sandwich
     description: ""
     method: GET
     body: {}
@@ -431,10 +431,10 @@ resources:
     _type: request
   - _id: req_1a71b9f59b0c45a587e6d3d40cffa5c9
     parentId: fld_51df61309fa04d2abb281e73278b6892
-    modified: 1601810559681
+    modified: 1601820433945
     created: 1601601696272
-    url: http://{{ apiAddress }}/sandwich_recipe/54
-    name: List Sandwich Recipe By Id
+    url: http://{{ apiAddress }}/sandwich/54
+    name: List Sandwich By Id
     description: ""
     method: GET
     body: {}
@@ -454,12 +454,12 @@ resources:
     _type: request
   - _id: req_78fd7d5f904944118d0b1b9e6201b56b
     parentId: fld_51df61309fa04d2abb281e73278b6892
-    modified: 1601810563352
+    modified: 1601820436400
     created: 1601601696281
-    url: http://{{ apiAddress }}/sandwich_recipe
-    name: Update Sandwich Recipe
+    url: http://{{ apiAddress }}/sandwich
+    name: Update Sandwich
     description: ""
-    method: POST
+    method: PUT
     body:
       mimeType: application/json
       text: |-2
@@ -497,10 +497,10 @@ resources:
     _type: request
   - _id: req_709aa4f5a1924b12bb74b58592532b55
     parentId: fld_51df61309fa04d2abb281e73278b6892
-    modified: 1601810566127
+    modified: 1601820439047
     created: 1601601696277
-    url: http://{{ apiAddress }}/sandwich_recipe/57
-    name: Delete Sandwich Recipe
+    url: http://{{ apiAddress }}/sandwich/57
+    name: Delete Sandwich
     description: ""
     method: DELETE
     body: {}
@@ -520,10 +520,10 @@ resources:
     _type: request
   - _id: req_b1e933f7aba0463e8572d232fd247e59
     parentId: fld_dfe44fb89b5e44898ac1e77662cbfd66
-    modified: 1601810570670
+    modified: 1601820459874
     created: 1601674465872
-    url: http://{{ apiAddress }}/sandwich_item
-    name: Add Sandwich Item
+    url: http://{{ apiAddress }}/order_item
+    name: Add Order Item
     description: ""
     method: POST
     body:
@@ -550,60 +550,20 @@ resources:
     _type: request
   - _id: fld_dfe44fb89b5e44898ac1e77662cbfd66
     parentId: fld_e2664ed1c88248c6aa21a4b2c36043ac
-    modified: 1601747340021
+    modified: 1601820188959
     created: 1601674465864
-    name: Sandwich Item
+    name: Order Item
     description: ""
     environment: {}
     environmentPropertyOrder: null
     metaSortKey: -1601451132988
     _type: request_group
-  - _id: req_cb1a6a3097ee4024a7141351a27c0f22
-    parentId: fld_dfe44fb89b5e44898ac1e77662cbfd66
-    modified: 1601810574544
-    created: 1601674495151
-    url: http://{{ apiAddress }}/sandwich_items
-    name: Add Sandwich By Sandwich Recipe Id
-    description: ""
-    method: POST
-    body:
-      mimeType: application/json
-      text: |-
-        [
-        	{
-        	"ingredient": { "id": 100 },
-        		"sale": { "id": 105 }
-          },
-        	{
-        	"ingredient": { "id": 100 },
-        		"sale": { "id": 105 }
-          },
-        	{
-        	"ingredient": { "id": 103 },
-        		"sale": { "id": 105 }
-          }
-        ]
-    parameters: []
-    headers:
-      - name: Content-Type
-        value: application/json
-        id: pair_dbfb4d18989549698fa21b68ddf38d0c
-    authentication: {}
-    metaSortKey: -1601424257820.25
-    isPrivate: false
-    settingStoreCookies: true
-    settingSendCookies: true
-    settingDisableRenderRequestBody: false
-    settingEncodeUrl: true
-    settingRebuildPath: true
-    settingFollowRedirects: global
-    _type: request
   - _id: req_0e7a0f33d8c04a409a7c653b278a6546
     parentId: fld_dfe44fb89b5e44898ac1e77662cbfd66
-    modified: 1601810577473
+    modified: 1601820463707
     created: 1601674465881
-    url: http://{{ apiAddress }}/sandwich_items
-    name: List Sandwich Items
+    url: http://{{ apiAddress }}/order_item
+    name: List Order Items
     description: ""
     method: GET
     body: {}
@@ -621,10 +581,10 @@ resources:
     _type: request
   - _id: req_518e39138ab648e0b393fbeaaa9006f4
     parentId: fld_dfe44fb89b5e44898ac1e77662cbfd66
-    modified: 1601810579853
+    modified: 1601820466771
     created: 1601674465885
-    url: http://{{ apiAddress }}/sandwich_item/68
-    name: List Sandwich Item By Id
+    url: http://{{ apiAddress }}/order_item/68
+    name: List Order Item By Id
     description: ""
     method: GET
     body: {}
@@ -642,10 +602,10 @@ resources:
     _type: request
   - _id: req_caaa33cdac244aa9ac3d596b159d2ad4
     parentId: fld_dfe44fb89b5e44898ac1e77662cbfd66
-    modified: 1601810582508
+    modified: 1601820469994
     created: 1601683148442
-    url: http://{{ apiAddress }}/sandwich_items/sale/72/
-    name: List Sandwich Items by Sale Id
+    url: http://{{ apiAddress }}/order_item/sale/72/
+    name: List Order Items by Sale Id
     description: ""
     method: GET
     body: {}
@@ -663,12 +623,12 @@ resources:
     _type: request
   - _id: req_5a34ef568c3c4e08a0533cd8b50945ae
     parentId: fld_dfe44fb89b5e44898ac1e77662cbfd66
-    modified: 1601810585432
+    modified: 1601820472569
     created: 1601674465893
-    url: http://{{ apiAddress }}/sandwich_item
-    name: Update Sandwich Item
+    url: http://{{ apiAddress }}/order_item
+    name: Update Order Item
     description: ""
-    method: POST
+    method: PUT
     body:
       mimeType: application/json
       text: |2
@@ -696,10 +656,10 @@ resources:
     _type: request
   - _id: req_48a30c1df2aa4412bb436269164d72cc
     parentId: fld_dfe44fb89b5e44898ac1e77662cbfd66
-    modified: 1601810587880
+    modified: 1601820475912
     created: 1601674465889
-    url: http://{{ apiAddress }}/sandwich_item/97
-    name: Delete Sandwich Item
+    url: http://{{ apiAddress }}/order_item/97
+    name: Delete Order Item
     description: ""
     method: DELETE
     body: {}
@@ -717,10 +677,10 @@ resources:
     _type: request
   - _id: req_776bedb182e7405894bbb4f3253ecaf4
     parentId: fld_0b5c3ec680a54320830a4c8cd7dde5bc
-    modified: 1601810591588
+    modified: 1601820479764
     created: 1601681466528
-    url: http://{{ apiAddress }}/sandwich
-    name: Add Sandwich
+    url: http://{{ apiAddress }}/order
+    name: Add Order
     description: ""
     method: POST
     body:
@@ -746,9 +706,9 @@ resources:
     _type: request
   - _id: fld_0b5c3ec680a54320830a4c8cd7dde5bc
     parentId: fld_e2664ed1c88248c6aa21a4b2c36043ac
-    modified: 1601747362756
+    modified: 1601820302593
     created: 1601681466518
-    name: "Sandwich "
+    name: Order
     description: ""
     environment: {}
     environmentPropertyOrder: null
@@ -756,17 +716,17 @@ resources:
     _type: request_group
   - _id: req_987e7f13e7f640bc982b3d4cb0289541
     parentId: fld_0b5c3ec680a54320830a4c8cd7dde5bc
-    modified: 1601810594088
+    modified: 1601820483453
     created: 1601736443757
-    url: http://{{ apiAddress }}/sandwich
-    name: Add Sandwich With Sandwich Recipe
+    url: http://{{ apiAddress }}/order
+    name: Add Order With Sandwich Recipe
     description: ""
     method: POST
     body:
       mimeType: application/json
       text: |-
         {
-        	"sandwichRecipe": { "id": 116 }
+        	"sandwichRecipe": { "id": 1 }
         }
     parameters: []
     headers:
@@ -785,10 +745,10 @@ resources:
     _type: request
   - _id: req_714c349f0362435a991e00566779dca6
     parentId: fld_0b5c3ec680a54320830a4c8cd7dde5bc
-    modified: 1601810599105
+    modified: 1601820485612
     created: 1601681466540
-    url: http://{{ apiAddress }}/sandwiches
-    name: List Sandwiches
+    url: http://{{ apiAddress }}/order
+    name: List Order
     description: ""
     method: GET
     body: {}
@@ -806,10 +766,10 @@ resources:
     _type: request
   - _id: req_ba5e7b930f294832b31ae5e7e8e0bbfe
     parentId: fld_0b5c3ec680a54320830a4c8cd7dde5bc
-    modified: 1601810603201
+    modified: 1601820490320
     created: 1601681466546
-    url: http://{{ apiAddress }}/api/sandwich/70
-    name: List Sandwich By Id
+    url: http://{{ apiAddress }}/order/70
+    name: List Order By Id
     description: ""
     method: GET
     body: {}
@@ -827,12 +787,12 @@ resources:
     _type: request
   - _id: req_9c565b63bf0c4dcd9316582b4e0f1409
     parentId: fld_0b5c3ec680a54320830a4c8cd7dde5bc
-    modified: 1601810607260
+    modified: 1601820493344
     created: 1601681466553
-    url: http://{{ apiAddress }}/api/sandwich
-    name: Update Sandwich Item
+    url: http://{{ apiAddress }}/order
+    name: Update Order
     description: ""
-    method: POST
+    method: PUT
     body:
       mimeType: application/json
       text: |2
@@ -857,10 +817,10 @@ resources:
     _type: request
   - _id: req_3f5d5a34e48346dcb07db8c6c5af4739
     parentId: fld_0b5c3ec680a54320830a4c8cd7dde5bc
-    modified: 1601810609872
+    modified: 1601820496915
     created: 1601681466550
-    url: http://{{ apiAddress }}/api/sandwich/70
-    name: Delete Sandwich Item
+    url: http://{{ apiAddress }}/order/70
+    name: Delete Order
     description: ""
     method: DELETE
     body: {}
@@ -878,12 +838,12 @@ resources:
     _type: request
   - _id: env_a5a246387d2c51eb54da382bd4eaf5d611972484
     parentId: wrk_62faef90fdb54185bc0e531127ec3432
-    modified: 1601810505235
+    modified: 1601821665039
     created: 1601532092205
     name: Base Environment
     data:
       apiAddress: localhost:9191
-      token: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJlbXBsb3llZSIsImV4cCI6MTYwMTgyODQ1MiwiaWF0IjoxNjAxODEwNDUyfQ.D4CbZqk6jE6Zo33kNGMwEgjREpwcGjeGNWXefWvRnXJx-DcORSaiOFDlwkD9fg3YedOk0nJZ1QWr6tGdMrah2g
+      token: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJlbXBsb3llZSIsImV4cCI6MTYwMTgzOTY1NywiaWF0IjoxNjAxODIxNjU3fQ.m2wZ4OLESFAD0g_j5dmXWiMmpYl1f_BlV2yfRSf-QOrD2Jy86F_DoMDbX5pGhPTYW7YaWlh8CA6-OvCWuzVGNw
     dataPropertyOrder:
       "&":
         - apiAddress

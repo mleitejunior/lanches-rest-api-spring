@@ -11,22 +11,22 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "sandwich_item")
-public class SandwichItem {
+@Table(name = "tbl_order_item")
+public class OrderItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="sandwich_item_id")
+    @Column(name="tbl_order_item_id")
     private Integer id;
 
     @Column
     private Double ingredientPrice;
 
     @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "ingredient_id", nullable = false)
+    @JoinColumn(name = "tbl_ingredient_id", nullable = false)
     private Ingredient ingredient;
 
     @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "sandwich_id", nullable = false)
-    private Sandwich sandwich;
+    @JoinColumn(name = "tbl_order_id", nullable = false)
+    private Order order;
 }

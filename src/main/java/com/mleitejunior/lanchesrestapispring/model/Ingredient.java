@@ -12,12 +12,12 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "ingredient")
+@Table(name = "tbl_ingredient")
 public class Ingredient {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="ingredient_id")
+    @Column(name="tbl_ingredient_id")
     private Integer id;
 
     @Column(unique = true, nullable = false)

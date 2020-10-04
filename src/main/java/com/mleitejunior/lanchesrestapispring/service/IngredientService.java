@@ -17,7 +17,7 @@ public class IngredientService {
         return repository.save(ingredient);
     }
 
-    public List<Ingredient> saveIngredients(List<Ingredient> ingredients) {
+    public List<Ingredient> saveIngredient(List<Ingredient> ingredients) {
         return repository.saveAll(ingredients);
     }
 

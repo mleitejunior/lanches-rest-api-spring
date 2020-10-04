@@ -2,7 +2,6 @@ package com.mleitejunior.lanchesrestapispring.controller;
 
 import com.mleitejunior.lanchesrestapispring.model.Ingredient;
 import com.mleitejunior.lanchesrestapispring.service.IngredientService;
-import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -29,13 +28,13 @@ public class IngredientController {
             response = List.class)
     @PostMapping("/ingredients")
     public ResponseEntity<List<Ingredient>> addIngredients(@RequestBody List<Ingredient> ingredients) {
-        return ResponseEntity.ok(service.saveIngredients(ingredients));
+        return ResponseEntity.ok(service.saveIngredient(ingredients));
     }
 
     @ApiOperation(value = "Get the list of all Ingredients",
             notes = "Returns all Ingredients with theirs attributes",
             response = List.class)
-    @GetMapping("/ingredients")
+    @GetMapping("/ingredient")
     public ResponseEntity<List<Ingredient>> findAllIngredients() {
         return ResponseEntity.ok(service.getIngredients());
     }
@@ -55,6 +54,8 @@ public class IngredientController {
     public ResponseEntity<Ingredient> findIngredientByName(@PathVariable String name) {
         return ResponseEntity.ok(service.getIngredientByName(name));
     }
+
+    // PUT
 
     @ApiOperation(value = "Delete a ingredient",
             notes = "Delete a ingredient by given Id, returning a String conclusion message",

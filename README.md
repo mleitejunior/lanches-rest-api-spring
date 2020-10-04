@@ -3,6 +3,8 @@
 </p>
 
 <p align="center"><b>Rest API</b> de gestão de lanches (backend)<br>
+	
+A Lanches API Rest tem o intuito de gerir a venda de lanches, possibilitando o registro de ingredientes e a criação de lanches personalizados, assim como calcular o valor do lanche e aplicando descontos promocionais para lanches com ingredientes específicos.
 
 ## Techs
   - Java 8
@@ -32,7 +34,9 @@ Troque o `localhost` e a porta `5432` para as equivalentes ao seu banco (assim c
 
 ### Montando o projeto:
 
-Baixe o projeto para seu computador através do ZIP ou do comando `git clone https://github.com/mleitejunior/lanches-rest-api-spring`.
+Baixe o projeto para seu computador através do ZIP ou do comando:
+
+`git clone https://github.com/mleitejunior/lanches-rest-api-spring`
 
 Na pasta do projeto execute `maven clean install` para montar o projeto baixando os arquivos necessários. Se as configurações do banco estiverem corretas, após os testes você receberá `BUILD SUCCESS`.
 
@@ -51,7 +55,7 @@ Algumas requisições precisam de autenticação no sistema para funcionar, util
 }
 ```
 
-Salve o bearer token de resposta e o utilize para as requisições que somente os funcionários poderão executar.
+**Salve o bearer token** de resposta e o utilize para as requisições que somente os funcionários poderão executar.
 
 
 ## Database Schema
@@ -60,24 +64,22 @@ Salve o bearer token de resposta e o utilize para as requisições que somente o
 
 Baixe o `.sql` de [exemplo de banco já populado](https://raw.githubusercontent.com/mleitejunior/lanches-rest-api-spring/master/readme_resources/dump-lanches.sql)
 
-O Lanches API rest tem o intuito de gerir a venda de lanches, possibilitando o registro de ingredientes e a criação de lanches personalizados, assim como calcular o valor do lanche e aplicando descontos promocionais para lanches com ingredientes específicos.
-
 *Entidades:*
 - ingredient (ingredientes dos lanches com seu valor por custo)
-- sandwich_recipe (a "receita" do lanche que irá definir os ingredientes, x-bacon, por exemplo)
-- sandwich (representa o pedido de um lanche em específico)
-- sandwich_item (o ingrediente do lanche específico)
+- sandwich (o lanche em si)
+- order (representa o pedido de um lanche em específico)
+- order_item (o ingrediente do lanche específico)
 
-ps: O atributo **ingredient_price** em `sandwich_item` existe para manter registrado o valor atual do ingrediente no momento do pedido. Caso contrário não seria necessário por já existir o **price_per_item** em `ingredient`.
+ps: O atributo **ingredient_price** em `order_item` existe para manter registrado o valor atual do ingrediente no momento do pedido. Caso contrário não seria necessário por já existir o **price_per_item** em `ingredient`.
 
 *Tabela de relacionamento:*
 - sandwich_recipe_has_ingredient (armazena quais ingredientes fazem parte de uma receita)
 
 ## Requisições e Regras de Negócios
 
-**INSERINDO NOVA RECEITA DE SANDUICHE:**
+**INSERINDO NOVO SANDUICHE:**
 
-O exemplo do banco já populado foi adicionado pelo POST `/sandwich_recipe` da seguinte forma:
+O exemplo do banco já populado foi adicionado pelo POST `/sandwich` da seguinte forma:
 ```
 [
 	{
@@ -96,12 +98,12 @@ O exemplo do banco já populado foi adicionado pelo POST `/sandwich_recipe` da s
 Onde `3` é o ID do hambúrguer no banco e `5` é ID do queijo.
 
 
-**FAZENDO O PEDIDO DE UM LANCHE POR RECEITA:**
+**FAZENDO O PEDIDO UTILIZANDO O SANDUÍCHE:**
 
-É possível pedir um sanduiche direto pelo id de sua receita, gerando os `sandwich_items` diretamente através de um POST `/sandwich`:
+É possível pedir um sanduiche direto pelo id de sua receita, gerando os `ordem_item` diretamente através de um POST `/order`:
 ```
 {
-	"sandwichRecipe": { "id": 1 }
+	"sandwich": { "id": 1 }
 }
 ```
 
@@ -116,12 +118,15 @@ A classe `src/main/java/com/mleitejunior/lanchesrestapispring/service/PromotionS
 *Muita carne:* A cada 3 porções de hambúrguer o cliente só paga 2, a cada 6 porções, o cliente pagará 4 e assim sucessivamente.
 *Muito queijo:* A cada 3 porções de queijo o cliente só paga 2, a cada 6 porções, o cliente pagará 4 e assim sucessivamente.
 
-Sempre que ocorrer um INSERT, UPDATE ou DELETE de um `sandwich_item`, o desconto é calculado sobre o preço do `sandwich`.
+Sempre que ocorrer um INSERT, UPDATE ou DELETE de um `order_item`, o desconto é calculado sobre o preço do `order`.
 
 ## Melhorias
 
-**Swagger:**
-No momento a documentação existe porém não cobre ainda os métodos citados nos exemplos acima.
+**Implementação de sistema de vendas:**
+É necessário expandir o banco e o sistema tanto para as validações atuais quanto para recursos básicos de uma lanchonete.
+
+**Frontend:**
+Para consumir a API e visualizar o sistema.
 
 **Autenticação AWT**
 No momento a autenticação está feita por regex (o que é longe do ideal) e as credenciais estão salvas na memória, será criado a entidade `user` para registrar clientes e funcionários e mapeadas as requisições corretas para que se autentique de acordo com as permissões de usuário.

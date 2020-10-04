@@ -26,7 +26,7 @@ public class SwaggerConfig {
     private ApiInfo metaInfo() {
         return new ApiInfo(
                 "Lanches REST API",
-                "Application to manage Sandwich Sales (MVP)",
+                "Application to manage Order Sales (MVP)",
                 "1.0",
                 "Free to use",
                 "http://github.com/mleitejunior",

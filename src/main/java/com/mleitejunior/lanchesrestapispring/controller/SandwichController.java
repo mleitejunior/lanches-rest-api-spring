@@ -19,7 +19,12 @@ public class SandwichController {
         return ResponseEntity.ok(service.saveSandwich(sandwich));
     }
 
-    @GetMapping("/sandwiches")
+    @PostMapping("/sandwiches")
+    public ResponseEntity<List<Sandwich>> addSandwich(@RequestBody List<Sandwich> sandwiches) {
+        return ResponseEntity.ok(service.saveSandwich(sandwiches));
+    }
+
+    @GetMapping("/sandwich")
     public ResponseEntity<List<Sandwich>> findAllSandwiches() {
         return ResponseEntity.ok(service.getSandwiches());
     }
@@ -27,6 +32,11 @@ public class SandwichController {
     @GetMapping("/sandwich/{id}")
     public ResponseEntity<Sandwich> findSandwichById(@PathVariable int id) {
         return ResponseEntity.ok(service.getSandwichById(id));
+    }
+
+    @GetMapping("/sandwich/name/{name}")
+    public ResponseEntity<Sandwich> findSandwichByName(@PathVariable String name) {
+        return ResponseEntity.ok(service.getSandwichByName(name));
     }
 
     @DeleteMapping("/sandwich/{id}")
