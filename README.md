@@ -118,7 +118,9 @@ Onde `1` seria o id de um x-bacon por exemplo.
 A classe `src/main/java/com/mleitejunior/lanchesrestapispring/service/PromotionService.java` gerencia a regra de negócios das promoções, que no momento são 3:
 
 *Light:* Se o lanche tem alface e não tem bacon, ganha 10% de desconto.
+
 *Muita carne:* A cada 3 porções de hambúrguer o cliente só paga 2, a cada 6 porções, o cliente pagará 4 e assim sucessivamente.
+
 *Muito queijo:* A cada 3 porções de queijo o cliente só paga 2, a cada 6 porções, o cliente pagará 4 e assim sucessivamente.
 
 Sempre que ocorrer um INSERT, UPDATE ou DELETE de um `order_item`, o desconto é calculado sobre o preço do `order`.
